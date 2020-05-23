@@ -1,0 +1,25 @@
+#!/bin/bash
+echo "the pressure of collision is -:"
+g++ hack.cpp
+a="$echo `./a.out`"
+echo $a
+
+if [ $a == "Accident" ]; then
+	echo "do u want to cancel the connection"
+	read maunal
+	if [ $manual == "yes" ];then
+		echo "cancelled"
+	else
+		ip="$echo `ip addr | grep global`"
+		ip | cat >> text.txt
+		b="$echo `curl http://ifconfig.in`"
+
+		  crontab -l | { cat; echo "01 * * * * echo $b"; } | crontab -
+	    	echo "Script added to Cron"
+			echo $b
+	fi
+else
+	echo "everyone is safe"
+fi
+
+
